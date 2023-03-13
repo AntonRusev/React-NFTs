@@ -9,7 +9,7 @@ import { Register } from './components/Register';
 
 function App() {
     return (
-        <div class="container">
+        <div className="container">
             <Header />
 
             <Routes>

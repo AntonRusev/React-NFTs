@@ -1,6 +1,23 @@
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 import './LoginAndRegister.css'
 
 export const Login = () => {
+
+    const [formValues, setFormValues] = useState({
+        username: '',
+        password: ''
+    });
+
+    function onFormValueChange(e) {
+        setFormValues(state => ({...state, [e.target.name]: e.target.value}));
+    }
+
+    function onLoginClick() {
+        console.log(formValues);
+    }
+
     return (
         <main id="login">
             <div className="login-side">
@@ -10,25 +27,27 @@ export const Login = () => {
                 <h2>Welcome back</h2>
                 <form action="post" id="login-form">
                     <div className="username-wrap">
-                        <label for="username"><i className="fa-solid fa-user-large"></i></label>
-                            <input type="text" id="username" placeholder="Username" />
+                        <label htmlFor="username"><i className="fa-solid fa-user-large"></i></label>
+                            <input type="text" name='username' id="username" placeholder="Username" value={formValues.username} onChange={onFormValueChange} />
                             <div className="reject-accept">
                                 <i className="fa-solid fa-circle-check accepted"></i>
                                 <i className="fa-solid fa-ban rejected"></i>
                             </div>
                     </div>
                     <div className="password-wrap">      
-                        <label for="password"><i class="fa-solid fa-unlock"></i></label>
-                            <input type="password" id="password" placeholder="Password" />
+                        <label htmlFor="password"><i className="fa-solid fa-unlock"></i></label>
+                            <input type="password" name='password' id="password" placeholder="Password" value={formValues.password} onChange={onFormValueChange} />
                             <div className="reject-accept">
                                 <i className="fa-solid fa-circle-check accepted"></i>
                                 <i className="fa-solid fa-ban rejected"></i>
                             </div>
                     </div>
-                    <button>Sign in</button>
+
+                    <input type="button" className='button' name="submit" value="Login" onClick={onLoginClick} />
+                    
                     <p>
                         Don't have an account?
-                        <a href="#">Register</a>
+                        <Link to='/register'>Register</Link>
                     </p>
                 </form>
             </div>

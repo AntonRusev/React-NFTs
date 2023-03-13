@@ -1,6 +1,26 @@
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 import './LoginAndRegister.css'
 
 export const Register = () => {
+
+    const [formValues, setFormValues] = useState({
+        username: '',
+        email: '',
+        password: '',
+        rePass: ''
+    });
+
+    function onFormValueChange(e) {
+        setFormValues(state => ({...state, [e.target.name]: e.target.value}));
+    }
+    // TODO - Check the proper spelling of rePass!
+
+    function onRegisterClick() {
+        console.log(formValues);
+    }
+
     return (
         <main id="register">
         <div className="register-side">
@@ -10,41 +30,43 @@ export const Register = () => {
             <h2>Join us</h2>
             <form action="post" id="register-form">
                 <div className="username-wrap">
-                    <label for="username"><i className="fa-solid fa-user-large"></i></label>
-                        <input type="text" id="username" placeholder="Username" />
+                    <label htmlFor="username"><i className="fa-solid fa-user-large"></i></label>
+                        <input type="text" name='username' id="username" placeholder="Username" value={formValues.username} onChange={onFormValueChange} />
                         <div className="reject-accept">
                             <i className="fa-solid fa-circle-check accepted"></i>
                             <i className="fa-solid fa-ban rejected"></i>
                         </div>
                 </div>
                 <div className="email-wrap">
-                    <label for="email"><i className="fa-solid fa-at"></i></label>
-                        <input type="text" id="email" placeholder="Email" />
+                    <label htmlFor="email"><i className="fa-solid fa-at"></i></label>
+                        <input type="text" name='email' id="email" placeholder="Email" value={formValues.email} onChange={onFormValueChange} />
                         <div className="reject-accept">
                             <i className="fa-solid fa-circle-check accepted"></i>
                             <i className="fa-solid fa-ban rejected"></i>
                         </div>
                 </div>
                 <div className="password-wrap">      
-                    <label for="password"><i className="fa-solid fa-unlock"></i></label>
-                        <input type="password" id="password" placeholder="Password" />
+                    <label htmlFor="password"><i className="fa-solid fa-unlock"></i></label>
+                        <input type="password" name='password' id="password" placeholder="Password" value={formValues.password} onChange={onFormValueChange} />
                         <div className="reject-accept">
                             <i className="fa-solid fa-circle-check accepted"></i>
                             <i className="fa-solid fa-ban rejected"></i>
                         </div>
                 </div>
-                <div className="repass-wrap">      
-                    <label for="repass"><i className="fa-solid fa-unlock-keyhole"></i></label>
-                        <input type="password" id="repass" placeholder="Repeat password" />
+                <div className="rePass-wrap">      
+                    <label htmlFor="rePass"><i className="fa-solid fa-unlock-keyhole"></i></label>
+                        <input type="password" name='rePass' id="rePass" placeholder="Repeat password" value={formValues.rePass} onChange={onFormValueChange} />
                         <div className="reject-accept">
                             <i className="fa-solid fa-circle-check accepted"></i>
                             <i className="fa-solid fa-ban rejected"></i>
                         </div>
                 </div>
-                <button>Sign up</button>
+
+                <input type="button" className='button' name="submit" value="Register" onClick={onRegisterClick} />
+
                 <p>
                     Already have an account?
-                    <a href="#">Login</a>
+                    <Link to='/login'>Login</Link>
                 </p>
             </form>
         </div>
