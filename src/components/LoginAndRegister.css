@@ -72,6 +72,14 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.login-wrap .disabled:hover, .register-wrap .disabled:hover {
+    cursor: pointer;
+    color: var(--container-bg);
+    background-color: gray;
+    color: var(--container-bg);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 .login-wrap p, .register-wrap p{
     font-size: 1.2rem;
     padding: 1rem;
@@ -109,18 +117,6 @@
     cursor: pointer;
 }
 
-.login-wrap .reject-accept, .register-wrap .reject-accept{
-    display: flex;
-}
-
-.reject-accept .accepted{
-    color: green;
-}
-
-.reject-accept .rejected{
-    color: red;
-}
-
 .username-wrap, .email-wrap, .password-wrap, .rePass-wrap {
     width: 80%;
     display: flex;
@@ -144,5 +140,24 @@
 }
 
 #username:focus , #email:focus, #password:focus, #rePass:focus {
+    outline: none;
     border-bottom: 1px solid var(--body-bg);
+}
+
+#login-form .validated, #register-form .validated {
+    visibility: hidden;
+}
+
+.not-validated {
+    color: var(--orange-regular);
+}
+
+.orange {
+    color: var(--orange-regular);
+}
+.green {
+    color: green;
+}
+.red {
+    color: red;
 }
