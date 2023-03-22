@@ -11,7 +11,6 @@ export const useForm = (initialValues) => {
     };
 
     function formValidate(e) {
-        // TODO FIX TOUCHED
         setTouched(state => ({ ...state, [e.target.name]: true }));
         
         const value = e.target.value;
@@ -37,10 +36,11 @@ export const useForm = (initialValues) => {
 
         if (e.target.name === 'rePass' && value.length < 5) {
             setFormErrors(state => ({ ...state, rePass: 'Repeat password must be at least 5 characters long' }));
+        } else if (e.target.name === 'rePass' && value !== formValues.password) {
+            setFormErrors(state => ({ ...state, rePass: 'Password and Repeat password do not match' }));
         } else if (e.target.name === 'rePass') {
             setFormErrors(state => ({ ...state, rePass: '' }));
         }
-        console.log(formErrors);
     }
 
     useEffect(() => {

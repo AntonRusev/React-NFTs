@@ -1,10 +1,14 @@
+import { useContext } from 'react';
+
 import { Link } from 'react-router-dom';
 
 import { useForm } from '../../hooks/useForm';
+import { AuthContext } from '../../contexts/AuthContext';
 
 import '../LoginAndRegister.css'
 
 export const Register = () => {
+    const { onAuthSubmit } = useContext(AuthContext);
 
     const { formValues, formErrors, disabled, touched, formValueChangeHandler, formValidate } = useForm({
         username: '',
@@ -13,12 +17,6 @@ export const Register = () => {
         rePass: ''
     });
 
-    function onRegisterClick() {
-        console.log(formValues);
-        console.log(formErrors);
-        console.log(disabled)
-    }
-
     return (
         <main id="register">
             <div className="register-side">
@@ -26,7 +24,7 @@ export const Register = () => {
             </div>
             <div className="register-wrap">
                 <h2>Join us</h2>
-                <form action="post" id="register-form">
+                <form action="post" id="register-form" onSubmit={e => onAuthSubmit(e, formValues)}>
                     <div className="username-wrap">
                         <label htmlFor="username"><i className={!touched.username ? 'fa-solid fa-user-large orange' : formErrors.username ? 'fa-solid fa-user-large red' : 'fa-solid fa-user-large green'}></i></label>
                         <input type="text" name='username' id="username" placeholder="Username" value={formValues.username} onChange={formValueChangeHandler} onBlur={formValidate} />
@@ -71,7 +69,7 @@ export const Register = () => {
                         </p>
                     </div>
 
-                    <input type="button" className={disabled ? 'button disabled' : 'button'} name="submit" value="Register" disabled={disabled} onClick={onRegisterClick} />
+                    <input type="submit" className={disabled ? 'button disabled' : 'button'} name="submit" value="Register" disabled={disabled} />
 
                     <p>
                         Already have an account?

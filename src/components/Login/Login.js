@@ -1,21 +1,20 @@
+import { useContext } from 'react';
+
 import { Link } from 'react-router-dom';
+
+import { AuthContext } from '../../contexts/AuthContext';
 
 import { useForm } from '../../hooks/useForm';
 
 import '../LoginAndRegister.css'
 
 export const Login = () => {
+    const { onAuthSubmit } = useContext(AuthContext);
 
     const { formValues, formErrors, disabled, touched, formValueChangeHandler, formValidate } = useForm({
         username: '',
         password: ''
     });
-
-    function onLoginClick() {
-        console.log(formValues);
-        console.log(formErrors);
-        console.log(disabled)
-    }
 
     return (
         <main id="login">
@@ -24,7 +23,7 @@ export const Login = () => {
             </div>
             <div className="login-wrap">
                 <h2>Welcome back</h2>
-                <form action="post" id="login-form">
+                <form action="post" id="login-form" onSubmit={e => onAuthSubmit(e, formValues)}>
                     <div className="username-wrap">
                         <label htmlFor="username"><i className={!touched.username ? 'fa-solid fa-user-large orange' : formErrors.username ? 'fa-solid fa-user-large red' : 'fa-solid fa-user-large green'}></i></label>
                         <input type="text" name='username' id="username" placeholder="Username" value={formValues.username} onChange={formValueChangeHandler} onBlur={formValidate} />
@@ -47,7 +46,7 @@ export const Login = () => {
                         </p>
                     </div>
 
-                    <input type="button" className={disabled ? 'button disabled' : 'button'} name="submit" value="Login" disabled={disabled} onClick={onLoginClick} />
+                    <input type="submit" className={disabled ? 'button disabled' : 'button'} name="submit" value="Login" disabled={disabled} />
 
                     <p>
                         Don't have an account?
