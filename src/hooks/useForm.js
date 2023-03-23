@@ -1,65 +1,66 @@
 import { useState, useEffect } from "react";
 
+import { useValidate } from "./useValidate";
+
 export const useForm = (initialValues) => {
     const [formValues, setFormValues] = useState(initialValues);
-    const [formErrors, setFormErrors] = useState(initialValues);
-    const [touched, setTouched] = useState(initialValues);
     const [disabled, setDisabled] = useState(true);
+
+    const { formValidate, formErrors, touched } = useValidate({ formValues });
 
     function formValueChangeHandler(e) {
         setFormValues(state => ({ ...state, [e.target.name]: e.target.value }));
     };
 
-    function formValidate(e) {
-        setTouched(state => ({ ...state, [e.target.name]: true }));
-        
-        const value = e.target.value;
-
-        if (e.target.name === 'username' && value.length < 5) {
-            setFormErrors(state => ({ ...state, username: 'Username must be at least 5 characters long' }));
-        } else if (e.target.name === 'username') {
-            setFormErrors(state => ({ ...state, username: '' }));
-        }
-
-        if (e.target.name === 'email' && value.length < 5) {
-            setFormErrors(state => ({ ...state, email: 'Email must be at least 5 characters long' }));
-        } else if (e.target.name === 'email'){
-            setFormErrors(state => ({ ...state, email: '' }));
-        }
-
-        if (e.target.name === 'password' && value.length < 5) {
-            setFormErrors(state => ({ ...state, password: 'Password must be at least 5 characters long' }));
-        }
-        else if (e.target.name === 'password') {
-            setFormErrors(state => ({ ...state, password: '' }));
-        }
-
-        if (e.target.name === 'rePass' && value.length < 5) {
-            setFormErrors(state => ({ ...state, rePass: 'Repeat password must be at least 5 characters long' }));
-        } else if (e.target.name === 'rePass' && value !== formValues.password) {
-            setFormErrors(state => ({ ...state, rePass: 'Password and Repeat password do not match' }));
-        } else if (e.target.name === 'rePass') {
-            setFormErrors(state => ({ ...state, rePass: '' }));
-        }
-    }
-
     useEffect(() => {
         if (
-            (formErrors.username || formErrors.email || formErrors.password || formErrors.rePass)
-            || (formValues.username === '' || formValues.email === '' || formValues.password === '' || formValues.rePass === '')
+            (formErrors.username
+                || formErrors.email
+                || formErrors.password
+                || formErrors.rePass
+                || formErrors.nftName
+                || formErrors.imageUrl
+                || formErrors.price
+                || formErrors.description)
+            || (formValues.username === ''
+                || formValues.email === ''
+                || formValues.password === ''
+                || formValues.rePass === ''
+                || formValues.nftName === ''
+                || formValues.imageUrl === ''
+                || formValues.price === ''
+                || formValues.description === '')
         ) {
             setDisabled(true);
         } else {
-            setDisabled(false);
+            if (formValues.rePass && (formValues.rePass !== formValues.password)) {
+                setDisabled(true);
+            } else {
+                setDisabled(false);
+            }
         }
-    }, [formErrors.username, formErrors.email, formErrors.password, formErrors.rePass, formValues.username, formValues.email, formValues.password, formValues.rePass]);
+    }, [formErrors.username,
+    formErrors.email,
+    formErrors.password,
+    formErrors.rePass,
+    formErrors.nftName,
+    formErrors.imageUrl,
+    formErrors.description,
+    formValues.username,
+    formValues.email,
+    formValues.password,
+    formValues.rePass,
+    formValues.nftName,
+    formValues.imageUrl,
+    formValues.description]
+    );
 
     return {
-        formValues,
-        formErrors,
-        disabled,
-        touched,
         formValueChangeHandler,
-        formValidate
-    }
-}
+        formValues,
+        disabled,
+        formValidate,
+        formErrors,
+        touched
+    };
+};

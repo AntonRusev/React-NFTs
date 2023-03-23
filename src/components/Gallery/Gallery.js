@@ -1,34 +1,22 @@
-import { useEffect, useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
 
-import * as nftsService from '../../services/nftsService';
+import { Link } from 'react-router-dom';
+
+import { NftContext } from '../../contexts/NftContext';
+
 import { GalleryItem } from '../GalleryItem/GalleryItem';
 
 export const Gallery = () => {
-    const [nfts, setNfts] = useState([]);
-
-    // const navigate = useNavigate();
-
-    useEffect(() => {
-        nftsService.getAll()
-            .then(result => setNfts(result))
-            .catch(err => console.log(err))
-    }, []);
-
-    // TODO
-    // const onCreateNftSubmit = async (data) => {
-
-
-    //     const newNft = await nftsService.create(data);
-
-    //     navigate('/gallery')
-    // };
+    const {nfts} = useContext(NftContext);
 
     return (
         <>
         <div>NFTS in the Gallery - {nfts.length}</div>
+        <div>
+        <Link to={'/create'}>Add your own NFT</Link>
+        </div>
         <ul>
-            {nfts.map(nft => <GalleryItem key={nft._id} {...nft} />)}
+            {nfts.map(nft => <GalleryItem key={nft._id} {...nft}/>)}
         </ul>
         </>
     );

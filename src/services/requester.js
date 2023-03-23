@@ -11,6 +11,16 @@ export const request = async (method, url, data) => {
 
             options.body = JSON.stringify(data);
         }
+
+        const userData = JSON.parse(localStorage.getItem('userData'));
+        
+        if (userData) {
+            console.log(options);
+            options.headers = {
+                ...options.headers,
+                'Authorization': userData.accessToken,
+            };
+        }
     }
 
     try {
