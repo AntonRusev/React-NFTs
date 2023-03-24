@@ -20,6 +20,7 @@ import { Logout } from './components/Logout/Logout';
 import { CreateNft } from './components/CreateNft/CreateNft';
 import { NotFound } from './components/NotFound/NotFound';
 import { Profile } from './components/Profile/Profile';
+import { EditNft } from './components/EditNft/EditNft';
 
 function App() {
     const [auth, setAuth] = useState({});
@@ -64,7 +65,7 @@ function App() {
         } catch (err) {
             console.log('There is a problem');
             throw new Error(err);
-        }
+        };
     };
 
     const onLogout = async () => {
@@ -75,7 +76,7 @@ function App() {
         };
 
         setAuth({});
-    }
+    };
 
     const onCreateNftSubmit = async (e, data) => {
         e.preventDefault();
@@ -86,6 +87,24 @@ function App() {
 
         navigate('/gallery');
     };
+
+    const onEditNftSubmit = async (e, nftId, data) => {
+        e.preventDefault();
+
+        const result = await nftsService.edit(nftId, data);
+
+        setNfts(state => state.map(x => x._id === data._id ? result : x));
+
+        navigate(`/gallery/${data._id}`);
+    };
+
+    const onDeleteClick = async (nftId) => {
+        await nftsService.remove(nftId);
+
+        setNfts(state => state.filter(x => x._id !== nftId));
+
+        navigate('/gallery');
+    }
 
     const authContextValue = {
         onAuthSubmit,
@@ -99,8 +118,10 @@ function App() {
 
     const nftContextValue = {
         onCreateNftSubmit,
+        onEditNftSubmit,
+        onDeleteClick,
         nfts
-    }
+    };
 
     return (
         <AuthContext.Provider value={authContextValue}>
@@ -116,6 +137,7 @@ function App() {
                         <Route path='/gallery' element={<Gallery />} />
                         <Route path='/create' element={<CreateNft />} />
                         <Route path='/gallery/:nftId' element={<NftDetails />} />
+                        <Route path='/gallery/:nftId/edit' element={<EditNft />} />
                         <Route path='/profile' element={<Profile />} />
                         <Route path='*' element={<NotFound  />} />
                     </Routes>

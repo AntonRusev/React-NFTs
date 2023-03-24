@@ -1,31 +1,45 @@
-import { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useContext, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
-import { useForm } from '../../hooks/useForm';
-import { NftContext } from '../../contexts/NftContext';
+import * as nftsService from '../../services/nftsService';
 
+import { NftContext } from "../../contexts/NftContext";
+import { useForm } from "../../hooks/useForm";
 
-export const CreateNft = () => {
-    const { onCreateNftSubmit } = useContext(NftContext);
+export const EditNft = () => {
+    const { onEditNftSubmit } = useContext(NftContext);
+
+    const { nftId } = useParams();
 
     const navigate = useNavigate();
-
-    const { formValues, formErrors, disabled, touched, formValueChangeHandler, formValidate } = useForm({
+    
+    const { formValues, formErrors, disabled, touched, formValueChangeHandler, formValidate, changeValues } = useForm({
         nftName: '',
         imageUrl: '',
         price: '',
-        description: '',
+        description: ''
     });
 
+    useEffect(() => {
+        nftsService.getOne(nftId)
+            .then(result => {
+                changeValues(result);
+            })
+            .catch(err => console.log(err));
+    }, [nftId]);
+
+
+
+
     const onBackClick = () => {
-        navigate('/gallery');
+        navigate(`/gallery/${nftId}`);
     };
 
     return (
         <main id="gallery">
             <div className="gallery-wrap">
-                <h2>Add your NFT</h2>
-                <form action="post" id="gallery-form" onSubmit={e => onCreateNftSubmit(e, formValues)}>
+                <h2>Edit NFT</h2>
+                <form action="post" id="gallery-form" onSubmit={e => onEditNftSubmit(e, nftId, formValues)}>
                     <div className="nftName-wrap">
                         <label htmlFor="nftName"><i className={!touched.nftName ? 'fa-solid fa-user-large orange' : formErrors.nftName ? 'fa-solid fa-user-large red' : 'fa-solid fa-user-large green'}></i></label>
                         <input type="text" name='nftName' id="nftName" placeholder="Name" value={formValues.nftName} onChange={formValueChangeHandler} onBlur={formValidate} />
@@ -70,10 +84,10 @@ export const CreateNft = () => {
                         </p>
                     </div>
 
-                    <input type="submit" className={disabled ? 'button disabled' : 'button'} name="submit" value="Add" disabled={disabled} />
+                    <input type="submit" className={disabled ? 'button disabled' : 'button'} name="submit" value="Save" disabled={disabled} />
                     <input type="button" name="back" value="Back" onClick={onBackClick} />
                 </form>
             </div>
         </main>
     );
-};
+}

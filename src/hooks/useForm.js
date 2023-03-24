@@ -12,6 +12,13 @@ export const useForm = (initialValues) => {
         setFormValues(state => ({ ...state, [e.target.name]: e.target.value }));
     };
 
+    const changeValues = (newValues) => {
+        // TODO: Validate newValues shape (like initialValues)
+        // console.log(Object.keys(newValues))
+        // console.log(`${Object.keys(formValues)} - formValues`)
+        setFormValues(newValues);
+    };
+
     useEffect(() => {
         if (
             (formErrors.username
@@ -45,6 +52,7 @@ export const useForm = (initialValues) => {
     formErrors.rePass,
     formErrors.nftName,
     formErrors.imageUrl,
+    formErrors.price,
     formErrors.description,
     formValues.username,
     formValues.email,
@@ -52,12 +60,14 @@ export const useForm = (initialValues) => {
     formValues.rePass,
     formValues.nftName,
     formValues.imageUrl,
+    formValues.price,
     formValues.description]
     );
 
     return {
         formValueChangeHandler,
         formValues,
+        changeValues,
         disabled,
         formValidate,
         formErrors,

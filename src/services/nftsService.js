@@ -19,3 +19,15 @@ export const getOne = async (nftId) => {
 
     return result;
 }
+
+export const edit = async (nftId, data) => {
+    const result = await request.put(`${baseUrl}/${nftId}`, data);
+
+    return result;
+}
+
+export const remove = async (nftId) => {
+    const result = await request.del(`${baseUrl}/${nftId}`);
+
+    return result;
+}

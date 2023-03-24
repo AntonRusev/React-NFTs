@@ -1,4 +1,5 @@
 export const request = async (method, url, data) => {
+
     const options = {};
 
     if (method !== 'GET') {
@@ -15,7 +16,6 @@ export const request = async (method, url, data) => {
         const userData = JSON.parse(localStorage.getItem('userData'));
         
         if (userData) {
-            console.log(options);
             options.headers = {
                 ...options.headers,
                 'Authorization': userData.accessToken,
