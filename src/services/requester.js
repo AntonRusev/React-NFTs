@@ -12,15 +12,15 @@ export const request = async (method, url, data) => {
 
             options.body = JSON.stringify(data);
         }
+    }
 
-        const userData = JSON.parse(localStorage.getItem('userData'));
-        
-        if (userData) {
-            options.headers = {
-                ...options.headers,
-                'Authorization': userData.accessToken,
-            };
-        }
+    const userData = JSON.parse(localStorage.getItem('userData'));
+    
+    if (userData) {
+        options.headers = {
+            ...options.headers,
+            'X-Authorization': userData.accessToken,
+        };
     }
 
     try {
@@ -28,14 +28,15 @@ export const request = async (method, url, data) => {
 
         if (response.ok !== true) {
             if (response.status === 403) {
-                // sessionStorage.removeItem('userData'); TODO
+                // sessionStorage.removeItem('userData'); 
             }
             const error = await response.json();
             throw new Error(error.message);
         }
 
         if (response.status === 204) {
-            return response;
+            // return response;
+            return {};
         } else {
             const result = await response.json();
     

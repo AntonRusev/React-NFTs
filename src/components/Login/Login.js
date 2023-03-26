@@ -12,7 +12,7 @@ export const Login = () => {
     const { onAuthSubmit } = useContext(AuthContext);
 
     const { formValues, formErrors, disabled, touched, formValueChangeHandler, formValidate } = useForm({
-        username: '',
+        email: '',
         password: ''
     });
 
@@ -25,13 +25,13 @@ export const Login = () => {
                 <h2>Welcome back</h2>
                 <form action="post" id="login-form" onSubmit={e => onAuthSubmit(e, formValues)}>
                     <div className="username-wrap">
-                        <label htmlFor="username"><i className={!touched.username ? 'fa-solid fa-user-large orange' : formErrors.username ? 'fa-solid fa-user-large red' : 'fa-solid fa-user-large green'}></i></label>
-                        <input type="text" name='username' id="username" placeholder="Username" value={formValues.username} onChange={formValueChangeHandler} onBlur={formValidate} />
+                        <label htmlFor="email"><i className={!touched.email ? 'fa-solid fa-user-large orange' : formErrors.email ? 'fa-solid fa-user-large red' : 'fa-solid fa-user-large green'}></i></label>
+                        <input type="text" name='email' id="email" placeholder="Email" value={formValues.email} onChange={formValueChangeHandler} onBlur={formValidate} />
                     </div>
                     {/* Validation field */}
                     <div>
-                        <p className={formErrors.username ? 'not-validated' : 'validated'}>
-                            {(formErrors.username) ? `${formErrors.username}` : 'Username must be at least 5 characters long'}
+                        <p className={formErrors.email ? 'not-validated' : 'validated'}>
+                            {(formErrors.email) ? `${formErrors.email}` : 'Email must be at least 5 characters long'}
                         </p>
                     </div>
 

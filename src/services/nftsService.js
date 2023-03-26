@@ -1,9 +1,12 @@
 import * as request from "./requester";
 
-const baseUrl = 'http://localhost:3030/data/catalog';
+// const baseUrl = 'http://localhost:3030/data/catalog';
+const baseUrl = 'http://localhost:3030/data/nfts';
 
 export const getAll = async () => {
     const nfts = await request.get(baseUrl);
+    console.log(nfts)
+    console.log('YIPEEEEEE')
 
     return nfts;
 };
