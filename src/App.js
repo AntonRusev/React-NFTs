@@ -1,11 +1,7 @@
-import { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
-import * as authService from './services/authService';
-import * as nftsService from './services/nftsService';
-
-import { AuthContext } from './contexts/AuthContext';
-import { NftContext } from './contexts/NftContext';
+import { AuthProvider } from './contexts/AuthContext';
+import { NftProvider } from './contexts/NftContext';
 
 import './App.css';
 
@@ -23,109 +19,10 @@ import { Profile } from './components/Profile/Profile';
 import { EditNft } from './components/EditNft/EditNft';
 
 function App() {
-    const [auth, setAuth] = useState({});
-    const [nfts, setNfts] = useState([]);
-
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        if (auth.accessToken) {
-            localStorage.setItem('userData', JSON.stringify(auth));
-        } else {
-            const userData = JSON.parse(localStorage.getItem('userData'));
-                if (userData) {
-                    setAuth(userData);
-                };
-        };
-    },[auth, auth.accessToken]);
-
-    useEffect(() => {
-        nftsService.getAll()
-            .then(result => setNfts(result))
-            .catch(err => console.log(err))
-    }, []);
-
-    const onAuthSubmit = async (e, formValues) => {
-        e.preventDefault();
-        let result = {};
-
-        const { rePass, ...values } = formValues;
-
-        const inputFields = Object.keys(formValues).length;
-
-        try {
-            if (inputFields > 2) {
-                result = await authService.register(values);
-            } else {
-                result = await authService.login(values);
-            }
-            setAuth(result);
-
-            navigate('/gallery');
-        } catch (err) {
-            console.log('There is a problem');
-            throw new Error(err);
-        };
-    };
-
-    const onLogout = async () => {
-        await authService.logout();
-
-        if (auth) {
-            localStorage.removeItem('userData');
-        };
-
-        setAuth({});
-    };
-
-    const onCreateNftSubmit = async (e, data) => {
-        e.preventDefault();
-
-        const newNft = await nftsService.create(data);
-
-        setNfts(state => [...state, newNft]);
-
-        navigate('/gallery');
-    };
-
-    const onEditNftSubmit = async (e, nftId, data) => {
-        e.preventDefault();
-
-        const result = await nftsService.edit(nftId, data);
-
-        setNfts(state => state.map(x => x._id === data._id ? result : x));
-
-        navigate(`/gallery/${data._id}`);
-    };
-
-    const onDeleteClick = async (nftId) => {
-        await nftsService.remove(nftId);
-
-        setNfts(state => state.filter(x => x._id !== nftId));
-
-        navigate('/gallery');
-    }
-
-    const authContextValue = {
-        onAuthSubmit,
-        onLogout,
-        userId: auth._id,
-        accessToken: auth.accessToken,
-        username: auth.username,
-        userEmail: auth.email,
-        isAuthenticated: !!auth.accessToken
-    };
-
-    const nftContextValue = {
-        onCreateNftSubmit,
-        onEditNftSubmit,
-        onDeleteClick,
-        nfts
-    };
 
     return (
-        <AuthContext.Provider value={authContextValue}>
-            <NftContext.Provider value={nftContextValue}>
+        <AuthProvider>
+            <NftProvider>
                 <div className="container">
                     <Header />
 
@@ -144,8 +41,8 @@ function App() {
 
                     <Footer />
                 </div>
-            </NftContext.Provider>
-        </AuthContext.Provider>
+            </NftProvider>
+        </AuthProvider>
     );
 };
 

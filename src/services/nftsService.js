@@ -5,8 +5,6 @@ const baseUrl = 'http://localhost:3030/data/nfts';
 
 export const getAll = async () => {
     const nfts = await request.get(baseUrl);
-    console.log(nfts)
-    console.log('YIPEEEEEE')
 
     return nfts;
 };
