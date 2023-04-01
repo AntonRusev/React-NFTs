@@ -17,6 +17,7 @@ import { CreateNft } from './components/CreateNft/CreateNft';
 import { NotFound } from './components/NotFound/NotFound';
 import { Profile } from './components/Profile/Profile';
 import { EditNft } from './components/EditNft/EditNft';
+import { GuestRouteGuard, UserRouteGuard } from './components/common/RouteGuard';
 
 function App() {
 
@@ -28,15 +29,19 @@ function App() {
 
                     <Routes>
                         <Route path='/' element={<Home />} />
-                        <Route path='/login' element={<Login />} />
-                        <Route path='/register' element={<Register />} />
-                        <Route path='/logout' element={<Logout />} />
+                        <Route element={<UserRouteGuard />}>
+                            <Route path='/login' element={<Login />} />
+                            <Route path='/register' element={<Register />} />
+                        </Route>
                         <Route path='/gallery' element={<Gallery />} />
-                        <Route path='/create' element={<CreateNft />} />
                         <Route path='/gallery/:nftId' element={<NftDetails />} />
-                        <Route path='/gallery/:nftId/edit' element={<EditNft />} />
-                        <Route path='/profile' element={<Profile />} />
-                        <Route path='*' element={<NotFound  />} />
+                        <Route element={<GuestRouteGuard />}>
+                            <Route path='/logout' element={<Logout />} />
+                            <Route path='/create' element={<CreateNft />} />
+                            <Route path='/gallery/:nftId/edit' element={<EditNft />} />
+                            <Route path='/profile' element={<Profile />} />
+                        </Route>
+                        <Route path='*' element={<NotFound />} />
                     </Routes>
 
                     <Footer />
