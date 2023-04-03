@@ -11,10 +11,10 @@ import '../LoginAndRegister.css'
 export const Login = () => {
     const { onAuthSubmit } = useContext(AuthContext);
 
-    const { formValues, formErrors, disabled, touched, formValueChangeHandler, formValidate } = useForm({
+    const { onSubmit, formValues, formErrors, disabled, touched, formValueChangeHandler, formValidate } = useForm({
         email: '',
         password: ''
-    });
+    }, onAuthSubmit);
 
     return (
         <main id="login">
@@ -23,7 +23,7 @@ export const Login = () => {
             </div>
             <div className="login-wrap">
                 <h2>Welcome back</h2>
-                <form action="post" id="login-form" onSubmit={e => onAuthSubmit(e, formValues)}>
+                <form action="post" id="login-form" onSubmit={e => onSubmit(e, formValues)}>
                     <div className="username-wrap">
                         <label htmlFor="email"><i className={!touched.email ? 'fa-solid fa-user-large orange' : formErrors.email ? 'fa-solid fa-user-large red' : 'fa-solid fa-user-large green'}></i></label>
                         <input type="text" name='email' id="email" placeholder="Email" value={formValues.email} onChange={formValueChangeHandler} onBlur={formValidate} />

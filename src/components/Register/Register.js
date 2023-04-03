@@ -10,12 +10,12 @@ import '../LoginAndRegister.css'
 export const Register = () => {
     const { onAuthSubmit } = useContext(AuthContext);
 
-    const { formValues, formErrors, disabled, touched, formValueChangeHandler, formValidate } = useForm({
+    const { onSubmit, formValues, formErrors, disabled, touched, formValueChangeHandler, formValidate } = useForm({
         username: '',
         email: '',
         password: '',
         rePass: ''
-    });
+    }, onAuthSubmit);
 
     return (
         <main id="register">
@@ -24,7 +24,7 @@ export const Register = () => {
             </div>
             <div className="register-wrap">
                 <h2>Join us</h2>
-                <form action="post" id="register-form" onSubmit={e => onAuthSubmit(e, formValues)}>
+                <form action="post" id="register-form" onSubmit={e => onSubmit(e, formValues)}>
                     <div className="username-wrap">
                         <label htmlFor="username"><i className={!touched.username ? 'fa-solid fa-user-large orange' : formErrors.username ? 'fa-solid fa-user-large red' : 'fa-solid fa-user-large green'}></i></label>
                         <input type="text" name='username' id="username" placeholder="Username" value={formValues.username} onChange={formValueChangeHandler} onBlur={formValidate} />

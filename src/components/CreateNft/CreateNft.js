@@ -10,12 +10,12 @@ export const CreateNft = () => {
 
     const navigate = useNavigate();
 
-    const { formValues, formErrors, disabled, touched, formValueChangeHandler, formValidate } = useForm({
+    const { onSubmit, formValues, formErrors, disabled, touched, formValueChangeHandler, formValidate } = useForm({
         nftName: '',
         imageUrl: '',
         price: '',
         description: '',
-    });
+    }, onCreateNftSubmit);
 
     const onBackClick = () => {
         navigate('/gallery');
@@ -25,7 +25,7 @@ export const CreateNft = () => {
         <main id="gallery">
             <div className="gallery-wrap">
                 <h2>Add your NFT</h2>
-                <form action="post" id="gallery-form" onSubmit={e => onCreateNftSubmit(e, formValues)}>
+                <form action="post" id="gallery-form" onSubmit={e => onSubmit(e, formValues)}>
                     <div className="nftName-wrap">
                         <label htmlFor="nftName"><i className={!touched.nftName ? 'fa-solid fa-user-large orange' : formErrors.nftName ? 'fa-solid fa-user-large red' : 'fa-solid fa-user-large green'}></i></label>
                         <input type="text" name='nftName' id="nftName" placeholder="Name" value={formValues.nftName} onChange={formValueChangeHandler} onBlur={formValidate} />

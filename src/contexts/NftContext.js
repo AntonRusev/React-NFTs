@@ -38,7 +38,7 @@ export const NftProvider = ({
         navigate(`/gallery/${data._id}`);
     };
 
-    const onDeleteClick = async (nftId) => {
+    const onDeleteConfirm = async (nftId) => {
         await nftsService.remove(nftId);
 
         setNfts(state => state.filter(x => x._id !== nftId));
@@ -49,7 +49,7 @@ export const NftProvider = ({
     const nftContextValue = {
         onCreateNftSubmit,
         onEditNftSubmit,
-        onDeleteClick,
+        onDeleteConfirm,
         nfts
     };
 

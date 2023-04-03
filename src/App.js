@@ -1,7 +1,10 @@
+import { useContext } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import { AuthProvider } from './contexts/AuthContext';
 import { NftProvider } from './contexts/NftContext';
+import { ModalContext } from './contexts/ModalContext';
+import { AlertModal } from './components/common/AlertModal';
 
 import './App.css';
 
@@ -17,37 +20,42 @@ import { CreateNft } from './components/CreateNft/CreateNft';
 import { NotFound } from './components/NotFound/NotFound';
 import { Profile } from './components/Profile/Profile';
 import { EditNft } from './components/EditNft/EditNft';
+
 import { GuestRouteGuard, UserRouteGuard } from './components/common/RouteGuard';
 
 function App() {
-
+    const { modal } = useContext(ModalContext);
     return (
-        <AuthProvider>
-            <NftProvider>
-                <div className="container">
-                    <Header />
+            <AuthProvider>
+                <NftProvider>
 
-                    <Routes>
-                        <Route path='/' element={<Home />} />
-                        <Route element={<UserRouteGuard />}>
-                            <Route path='/login' element={<Login />} />
-                            <Route path='/register' element={<Register />} />
-                        </Route>
-                        <Route path='/gallery' element={<Gallery />} />
-                        <Route path='/gallery/:nftId' element={<NftDetails />} />
-                        <Route element={<GuestRouteGuard />}>
-                            <Route path='/logout' element={<Logout />} />
-                            <Route path='/create' element={<CreateNft />} />
-                            <Route path='/gallery/:nftId/edit' element={<EditNft />} />
-                            <Route path='/profile' element={<Profile />} />
-                        </Route>
-                        <Route path='*' element={<NotFound />} />
-                    </Routes>
+                    <div className="container">
+                        {modal !== '' && <AlertModal />}
 
-                    <Footer />
-                </div>
-            </NftProvider>
-        </AuthProvider>
+                        <Header />
+
+                        <Routes>
+                            <Route path='/' element={<Home />} />
+                            <Route element={<UserRouteGuard />}>
+                                <Route path='/login' element={<Login />} />
+                                <Route path='/register' element={<Register />} />
+                            </Route>
+                            <Route path='/gallery' element={<Gallery />} />
+                            <Route path='/gallery/:nftId' element={<NftDetails />} />
+                            <Route element={<GuestRouteGuard />}>
+                                <Route path='/logout' element={<Logout />} />
+                                <Route path='/create' element={<CreateNft />} />
+                                <Route path='/gallery/:nftId/edit' element={<EditNft />} />
+                                <Route path='/profile' element={<Profile />} />
+                            </Route>
+                            <Route path='*' element={<NotFound />} />
+                        </Routes>
+
+                        <Footer />
+                    </div>
+
+                </NftProvider>
+            </AuthProvider>
     );
 };
 

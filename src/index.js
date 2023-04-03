@@ -5,13 +5,17 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 
+import { ModalProvider } from './contexts/ModalContext';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
- // <React.StrictMode>
+  // <React.StrictMode>
+  <ModalProvider>
     <BrowserRouter>
       <App />
     </BrowserRouter>
- // </React.StrictMode>
+  </ModalProvider>
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

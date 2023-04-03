@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import { useValidate } from "./useValidate";
 
-export const useForm = (initialValues) => {
+export const useForm = (initialValues, onSubmitHandler) => {
     const [formValues, setFormValues] = useState(initialValues);
     const [disabled, setDisabled] = useState(true);
 
@@ -14,9 +14,15 @@ export const useForm = (initialValues) => {
 
     const changeValues = (newValues) => {
         // TODO: Validate newValues shape (like initialValues)
-        // console.log(Object.keys(newValues))
-        // console.log(`${Object.keys(formValues)} - formValues`)
         setFormValues(newValues);
+    };
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+
+        onSubmitHandler(e, formValues);
+
+        setFormValues(initialValues);
     };
 
     useEffect(() => {
@@ -28,7 +34,8 @@ export const useForm = (initialValues) => {
                 || formErrors.nftName
                 || formErrors.imageUrl
                 || formErrors.price
-                || formErrors.description)
+                || formErrors.description
+                || formErrors.comment)
             || (formValues.username === ''
                 || formValues.email === ''
                 || formValues.password === ''
@@ -36,7 +43,8 @@ export const useForm = (initialValues) => {
                 || formValues.nftName === ''
                 || formValues.imageUrl === ''
                 || formValues.price === ''
-                || formValues.description === '')
+                || formValues.description === ''
+                || formValues.comment === '')
         ) {
             setDisabled(true);
         } else {
@@ -54,6 +62,7 @@ export const useForm = (initialValues) => {
     formErrors.imageUrl,
     formErrors.price,
     formErrors.description,
+    formErrors.comment,
     formValues.username,
     formValues.email,
     formValues.password,
@@ -61,10 +70,12 @@ export const useForm = (initialValues) => {
     formValues.nftName,
     formValues.imageUrl,
     formValues.price,
-    formValues.description]
+    formValues.description,
+    formValues.comment]
     );
 
     return {
+        onSubmit,
         formValueChangeHandler,
         formValues,
         changeValues,

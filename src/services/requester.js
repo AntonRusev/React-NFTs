@@ -45,7 +45,7 @@ export const request = async (method, url, data) => {
     
 
     } catch (err) {
-        alert(err.message);
+        // alert(err.message);
         throw err;
     }
 };

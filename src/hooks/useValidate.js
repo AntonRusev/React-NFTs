@@ -72,6 +72,14 @@ export const useValidate = (initialValues) => {
         } else if (e.target.name === 'description') {
             setFormErrors(state => ({ ...state, description: '' }));
         }
+
+        if (e.target.name === 'comment' && value === '') {
+            setFormErrors(state => ({ ...state, comment: 'Comment is required' }));
+        } else if (e.target.name === 'comment' && value.length < 5) {
+            setFormErrors(state => ({ ...state, comment: 'Comment must be at least 5 characters long' }));
+        } else if (e.target.name === 'comment') {
+            setFormErrors(state => ({ ...state, comment: '' }));
+        }
     }
 
     return {

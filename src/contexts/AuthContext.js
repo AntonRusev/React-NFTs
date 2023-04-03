@@ -1,7 +1,9 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
 import { useNavigate } from 'react-router-dom';
 
 import * as authService from '../services/authService';
+
+import { ModalContext } from "./ModalContext";
 
 export const AuthContext = createContext();
 
@@ -11,6 +13,8 @@ export const AuthProvider = ({
     const [auth, setAuth] = useState({});
 
     const navigate = useNavigate();
+
+    const { onModalActivate } = useContext(ModalContext);
 
     useEffect(() => {
         if (auth.accessToken) {
@@ -39,9 +43,11 @@ export const AuthProvider = ({
             }
             setAuth(result);
 
+            onModalActivate(`Success! Welcome, ${result.username}`);
+
             navigate('/gallery');
         } catch (err) {
-            console.log('There is a problem');
+            onModalActivate(err.message);
             throw new Error(err);
         };
     };
