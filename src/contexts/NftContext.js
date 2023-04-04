@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import * as nftsService from '../services/nftsService';
 
-export const NftContext = createContext();
+export const NftContext = createContext('');
 
 export const NftProvider = ({
     children,

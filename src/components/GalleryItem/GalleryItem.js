@@ -7,7 +7,7 @@ export const GalleryItem = ({
 }) => {
     return (
         <li>
-            <Link to={`/gallery/${_id}`}>{nftName} - {description}</Link>
+            <span>{nftName} - {description} - </span><Link to={`/gallery/${_id}`}>Details</Link>
         </li>
     );
 };
