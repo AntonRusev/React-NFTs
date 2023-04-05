@@ -43,11 +43,11 @@ export const AuthProvider = ({
             }
             setAuth(result);
 
-            onModalActivate(`Success! Welcome, ${result.username}`);
+            onModalActivate({text: `Welcome, ${result.username}`, type: 'green'});
 
             navigate('/gallery');
         } catch (err) {
-            onModalActivate(err.message);
+            onModalActivate({text: err.message, type: 'red'});
             throw new Error(err);
         };
     };

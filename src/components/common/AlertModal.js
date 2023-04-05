@@ -3,14 +3,24 @@ import { useContext } from 'react';
 import { ModalContext } from '../../contexts/ModalContext';
 
 export const AlertModal = () => {
-    const { modal, onModalClose } = useContext(ModalContext);
+    const { modalData, onModalClose } = useContext(ModalContext);
+
+    if (modalData.type !== 'orange') {
+        setTimeout(() => {
+            onModalClose();
+        }, 3000)
+    }
 
     return (
         <div onClick={onModalClose} className="overlay">
-            <div onClick={(e) => e.stopPropagation()} className="modal-container">
-                <button onClick={onModalClose}><i className="fa-regular fa-circle-xmark"></i></button>
-                <h3>{modal}</h3>
-                <button onClick={onModalClose}>OK</button>
+            <div onClick={(e) => e.stopPropagation()} className={`modal-container-${modalData.type} modal-container`}>
+                <p className={modalData.type === "green" ? 'green' : 'hidden'}>
+                    <i className="fa-solid fa-circle-check"></i>
+                </p>
+                <p className={modalData.type === "red" ? 'red' : 'hidden'}>
+                    <i className="fa-solid fa-triangle-exclamation"></i>
+                </p>
+                <p className='modal-message'>{modalData.text}</p>
             </div>
         </div>
     );

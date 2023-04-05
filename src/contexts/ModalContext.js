@@ -1,24 +1,34 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const ModalContext = createContext();
 
 export const ModalProvider = ({
     children
 }) => {
-    const [modal, setModal] = useState('');
+    const [modalData, setModalData] = useState({});
+    const [isModalActive, setIsModalActive] = useState(false);
+
+    useEffect(() => {
+        if(Object.keys(modalData).length !== 0) {
+            setIsModalActive(true);
+        } else {
+            setIsModalActive(false);
+        }
+    }, [modalData]);
 
     const onModalActivate = (data) => {
-        setModal(data);
+        setModalData(data);
     };
 
     const onModalClose = () => {
-        setModal('');
+        setModalData({});
     };
 
     const modalContextValue = {
         onModalActivate,
         onModalClose,
-        modal
+        modalData,
+        isModalActive
     };
 
     return (

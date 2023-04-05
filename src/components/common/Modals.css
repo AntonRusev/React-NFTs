@@ -1,13 +1,67 @@
 .overlay {
-    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.3);
     position: fixed;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
+    font-size: 24px;
+
 }
 
 .modal-container {
-    background-color: yellow;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding: 24px;
+}
 
+.modal-message {
+    display: block;
+    padding: 34px;
+}
+
+.modal-container i.fa-solid{
+    display: block;
+    margin-left: auto;
+    font-size: 74px;
+}
+
+.modal-container .hidden {
+    display: none;
+}
+
+.modal-container .green {
+    color: green;
+}
+
+.modal-container-green {
+    color: green;
+    border: solid 12px green;
+    border-radius: 12px;
+}
+
+.modal-container .orange {
+    color: orange;
+}
+
+.modal-container-orange {
+    color: orange;
+    border: solid 12px orange;
+    border-radius: 12px;
+}
+
+.modal-container .red {
+    color: red;
+}
+
+.modal-container-red {
+    color: red;
+    border: solid 12px red;
+    border-radius: 12px;
 }

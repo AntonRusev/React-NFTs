@@ -16,7 +16,7 @@ export const NftDetails = () => {
     const { nftId } = useParams();
 
     const { userId, isAuthenticated, username } = useContext(AuthContext);
-    const { modal, onModalActivate } = useContext(ModalContext);
+    const { isModalActive, onModalActivate } = useContext(ModalContext);
 
     const navigate = useNavigate();
 
@@ -59,7 +59,7 @@ export const NftDetails = () => {
 
     return (
         <>
-            {modal !== '' && <ConfirmModal />}
+            {isModalActive && <ConfirmModal />}
             <h1>Details for "{nft.nftName}"</h1>
             <div>
                 <p>{nft.price}</p>
@@ -70,7 +70,7 @@ export const NftDetails = () => {
             {(userId === nft._ownerId) &&
                 <div>
                     <Link to={`/gallery/${nftId}/edit`}>EDIT</Link>
-                    <button onClick={() => onModalActivate(nftId)}>DELETE</button>
+                    <button onClick={() => onModalActivate({text: nftId, type: 'orange'})}>DELETE</button>
                 </div>
             }
 

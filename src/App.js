@@ -24,13 +24,13 @@ import { EditNft } from './components/EditNft/EditNft';
 import { GuestRouteGuard, UserRouteGuard } from './components/common/RouteGuard';
 
 function App() {
-    const { modal } = useContext(ModalContext);
+    const { isModalActive } = useContext(ModalContext);
     return (
             <AuthProvider>
                 <NftProvider>
 
                     <div className="container">
-                        {modal !== '' && <AlertModal />}
+                        {isModalActive && <AlertModal />}
 
                         <Header />
 
