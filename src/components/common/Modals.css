@@ -17,7 +17,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background-color: whitesmoke;
     padding: 24px;
 }
 
@@ -46,6 +46,16 @@
     border-radius: 12px;
 }
 
+.modal-container .blue {
+    color: blue;
+}
+
+.modal-container-blue {
+    color: blue;
+    border: solid 12px blue;
+    border-radius: 12px;
+}
+
 .modal-container .orange {
     color: orange;
 }
@@ -65,3 +75,4 @@
     border: solid 12px red;
     border-radius: 12px;
 }
+

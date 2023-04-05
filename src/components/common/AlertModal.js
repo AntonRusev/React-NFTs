@@ -20,6 +20,9 @@ export const AlertModal = () => {
                 <p className={modalData.type === "red" ? 'red' : 'hidden'}>
                     <i className="fa-solid fa-triangle-exclamation"></i>
                 </p>
+                <p className={modalData.type === "blue" ? 'blue' : 'hidden'}>
+                    <i class="fa-solid fa-circle-info"></i>
+                </p>
                 <p className='modal-message'>{modalData.text}</p>
             </div>
         </div>

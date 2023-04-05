@@ -13,7 +13,7 @@ export const GuestRouteGuard = () => {
     const { onModalActivate } = useContext(ModalContext);
 
     if (!isAuthenticated) {
-        onModalActivate('You need to login to view this page.');
+        onModalActivate({text:'You need to login to view this page.', type: 'blue'});
         return <Navigate to='/login' />
     }
 
@@ -27,7 +27,7 @@ export const UserRouteGuard = () => {
     const { onModalActivate } = useContext(ModalContext);
 
     if (isAuthenticated) {
-        onModalActivate('You are already logged in.');
+        onModalActivate({text:'You are already logged in.', type: 'blue'});
         return <Navigate to='/' replace />
     }
 
