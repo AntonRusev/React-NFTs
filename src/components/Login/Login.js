@@ -6,7 +6,7 @@ import { AuthContext } from '../../contexts/AuthContext';
 
 import { useForm } from '../../hooks/useForm';
 
-import '../LoginAndRegister.css'
+import '../InputsAndForms.css'
 
 export const Login = () => {
     const { onAuthSubmit } = useContext(AuthContext);
@@ -25,24 +25,28 @@ export const Login = () => {
                 <h2>Welcome back</h2>
                 <form action="post" id="login-form" onSubmit={e => onSubmit(e, formValues)}>
                     <div className="username-wrap">
-                        <label htmlFor="email"><i className={!touched.email ? 'fa-solid fa-user-large orange' : formErrors.email ? 'fa-solid fa-user-large red' : 'fa-solid fa-user-large green'}></i></label>
+                        <label htmlFor="email">
+                            <i className={!touched.email ? 'fa-solid fa-user-large orange' : formErrors.email ? 'fa-solid fa-user-large red' : 'fa-solid fa-user-large green'}></i>
+                        </label>
                         <input type="text" name='email' id="email" placeholder="Email" value={formValues.email} onChange={formValueChangeHandler} onBlur={formValidate} />
                     </div>
                     {/* Validation field */}
                     <div>
                         <p className={formErrors.email ? 'not-validated' : 'validated'}>
-                            {(formErrors.email) ? `${formErrors.email}` : 'Email must be at least 5 characters long'}
+                            {(formErrors.email) ? `${formErrors.email}` : 'TEXT'}
                         </p>
                     </div>
 
                     <div className="password-wrap">
-                        <label htmlFor="password"><i className={!touched.password ? 'fa-solid fa-unlock orange' : formErrors.password ? 'fa-solid fa-unlock red' : 'fa-solid fa-unlock green'}></i></label>
+                        <label htmlFor="password">
+                            <i className={!touched.password ? 'fa-solid fa-unlock orange' : formErrors.password ? 'fa-solid fa-unlock red' : 'fa-solid fa-unlock green'}></i>
+                        </label>
                         <input type="password" name='password' id="password" placeholder="Password" value={formValues.password} onChange={formValueChangeHandler} onBlur={formValidate} />
                     </div>
                     {/* Validation field */}
                     <div>
                         <p className={formErrors.password ? 'not-validated' : 'validated'}>
-                            {(formErrors.password) ? `${formErrors.password}` : 'Password must be at least 5 characters long'}
+                            {(formErrors.password) ? `${formErrors.password}` : 'TEXT'}
                         </p>
                     </div>
 

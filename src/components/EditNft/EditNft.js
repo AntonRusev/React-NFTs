@@ -12,7 +12,7 @@ export const EditNft = () => {
     const { nftId } = useParams();
 
     const navigate = useNavigate();
-    
+
     const { formValues, formErrors, disabled, touched, formValueChangeHandler, formValidate, changeValues } = useForm({
         nftName: '',
         imageUrl: '',
@@ -36,12 +36,15 @@ export const EditNft = () => {
     };
 
     return (
-        <main id="gallery">
-            <div className="gallery-wrap">
+        <main id="create">
+            <div className="create-side">
+                <img className="side-img" src="https://images.unsplash.com/photo-1558456738-8664eb2ecb47?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1112&q=80" alt="" />
+            </div>
+            <div className="create-wrap">
                 <h2>Edit NFT</h2>
-                <form action="post" id="gallery-form" onSubmit={e => onEditNftSubmit(e, nftId, formValues)}>
+                <form action="post" id="create-form" onSubmit={e => onEditNftSubmit(e, nftId, formValues)}>
                     <div className="nftName-wrap">
-                        <label htmlFor="nftName"><i className={!touched.nftName ? 'fa-solid fa-user-large orange' : formErrors.nftName ? 'fa-solid fa-user-large red' : 'fa-solid fa-user-large green'}></i></label>
+                        <label htmlFor="nftName"><i className={!touched.nftName ? 'fa-solid fa-tag orange' : formErrors.nftName ? 'fa-solid fa-tag red' : 'fa-solid fa-tag green'}></i></label>
                         <input type="text" name='nftName' id="nftName" placeholder="Name" value={formValues.nftName} onChange={formValueChangeHandler} onBlur={formValidate} />
                     </div>
                     {/* Validation field */}
@@ -52,7 +55,7 @@ export const EditNft = () => {
                     </div>
 
                     <div className="imageUrl-wrap">
-                        <label htmlFor="imageUrl"><i className={!touched.imageUrl ? 'fa-solid fa-at orange' : formErrors.imageUrl ? 'fa-solid fa-at red' : 'fa-solid fa-at green'}></i></label>
+                        <label htmlFor="imageUrl"><i className={!touched.imageUrl ? 'fa-solid fa-image orange' : formErrors.imageUrl ? 'fa-solid fa-image red' : 'fa-solid fa-image green'}></i></label>
                         <input type="text" name='imageUrl' id="imageUrl" placeholder="Image URL" value={formValues.imageUrl} onChange={formValueChangeHandler} onBlur={formValidate} />
                     </div>
                     {/* Validation field */}
@@ -63,7 +66,7 @@ export const EditNft = () => {
                     </div>
 
                     <div className="price-wrap">
-                        <label htmlFor="price"><i className={!touched.price ? 'fa-solid fa-at orange' : formErrors.price ? 'fa-solid fa-at red' : 'fa-solid fa-at green'}></i></label>
+                        <label htmlFor="price"><i className={!touched.price ? 'fa-brands fa-bitcoin orange' : formErrors.price ? 'fa-brands fa-bitcoin red' : 'fa-brands fa-bitcoin green'}></i></label>
                         <input type="number" name='price' id="price" placeholder="Price" value={formValues.price} onChange={formValueChangeHandler} onBlur={formValidate} />
                     </div>
                     {/* Validation field */}
@@ -74,7 +77,7 @@ export const EditNft = () => {
                     </div>
 
                     <div className="description-wrap">
-                        <label htmlFor="description"><i className={!touched.description ? 'fa-solid fa-unlock orange' : formErrors.description ? 'fa-solid fa-unlock red' : 'fa-solid fa-unlock green'}></i></label>
+                        <label htmlFor="description"><i className={!touched.description ? 'fa-solid fa-pen orange' : formErrors.description ? 'fa-solid fa-pen red' : 'fa-solid fa-pen green'}></i></label>
                         <textarea type="text" name='description' id="description" placeholder="Description" value={formValues.description} onChange={formValueChangeHandler} onBlur={formValidate} />
                     </div>
                     {/* Validation field */}

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
 import { AuthContext } from '../../contexts/AuthContext';
 
-import '../LoginAndRegister.css'
+import '../InputsAndForms.css'
 
 export const Register = () => {
     const { onAuthSubmit } = useContext(AuthContext);
@@ -26,7 +26,9 @@ export const Register = () => {
                 <h2>Join us</h2>
                 <form action="post" id="register-form" onSubmit={e => onSubmit(e, formValues)}>
                     <div className="username-wrap">
-                        <label htmlFor="username"><i className={!touched.username ? 'fa-solid fa-user-large orange' : formErrors.username ? 'fa-solid fa-user-large red' : 'fa-solid fa-user-large green'}></i></label>
+                        <label htmlFor="username">
+                            <i className={!touched.username ? 'fa-solid fa-user-large orange' : formErrors.username ? 'fa-solid fa-user-large red' : 'fa-solid fa-user-large green'}></i>
+                        </label>
                         <input type="text" name='username' id="username" placeholder="Username" value={formValues.username} onChange={formValueChangeHandler} onBlur={formValidate} />
                     </div>
                     {/* Validation field */}
@@ -37,7 +39,9 @@ export const Register = () => {
                     </div>
 
                     <div className="email-wrap">
-                        <label htmlFor="email"><i className={!touched.email ? 'fa-solid fa-at orange' : formErrors.email ? 'fa-solid fa-at red' : 'fa-solid fa-at green'}></i></label>
+                        <label htmlFor="email">
+                            <i className={!touched.email ? 'fa-solid fa-at orange' : formErrors.email ? 'fa-solid fa-at red' : 'fa-solid fa-at green'}></i>
+                        </label>
                         <input type="text" name='email' id="email" placeholder="Email" value={formValues.email} onChange={formValueChangeHandler} onBlur={formValidate} />
                     </div>
                     {/* Validation field */}
@@ -48,7 +52,9 @@ export const Register = () => {
                     </div>
 
                     <div className="password-wrap">
-                        <label htmlFor="password"><i className={!touched.password ? 'fa-solid fa-unlock orange' : formErrors.password ? 'fa-solid fa-unlock red' : 'fa-solid fa-unlock green'}></i></label>
+                        <label htmlFor="password">
+                            <i className={!touched.password ? 'fa-solid fa-unlock orange' : formErrors.password ? 'fa-solid fa-unlock red' : 'fa-solid fa-unlock green'}></i>
+                        </label>
                         <input type="password" name='password' id="password" placeholder="Password" value={formValues.password} onChange={formValueChangeHandler} onBlur={formValidate} />
                     </div>
                     {/* Validation field */}
@@ -59,7 +65,9 @@ export const Register = () => {
                     </div>
 
                     <div className="rePass-wrap">
-                        <label htmlFor="rePass"><i className={!touched.rePass ? 'fa-solid fa-unlock-keyhole orange' : formErrors.rePass ? 'fa-solid fa-unlock-keyhole red' : 'fa-solid fa-unlock-keyhole green'}></i></label>
+                        <label htmlFor="rePass">
+                            <i className={!touched.rePass ? 'fa-solid fa-unlock-keyhole orange' : formErrors.rePass ? 'fa-solid fa-unlock-keyhole red' : 'fa-solid fa-unlock-keyhole green'}></i>
+                        </label>
                         <input type="password" name='rePass' id="rePass" placeholder="Repeat password" value={formValues.rePass} onChange={formValueChangeHandler} onBlur={formValidate} />
                     </div>
                     {/* Validation field */}
