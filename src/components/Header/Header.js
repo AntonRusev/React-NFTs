@@ -10,7 +10,9 @@ export const Header = () => {
 
 
     const handleCLick = () => {
-        setClick(!click);
+        if (window.innerWidth < 800) {
+            setClick(!click);
+        }
     }
 
     return (
@@ -24,8 +26,6 @@ export const Header = () => {
             </div>
 
             <nav className={click ? "nav" : "nav dropdown"}>
-
-
                 <ul className="home-nav">
                     <li><Link to='/' onClick={handleCLick}>HOME</Link></li>
                     <li><Link to='/gallery' onClick={handleCLick}>GALLERY</Link></li>

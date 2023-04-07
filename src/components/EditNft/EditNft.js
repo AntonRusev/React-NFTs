@@ -38,7 +38,7 @@ export const EditNft = () => {
     return (
         <main id="create">
             <div className="create-side">
-                <img className="side-img" src="https://images.unsplash.com/photo-1558456738-8664eb2ecb47?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1112&q=80" alt="" />
+                <img className="side-img" src={formValues.imageUrl} alt="" />
             </div>
             <div className="create-wrap">
                 <h2>Edit NFT</h2>
@@ -88,7 +88,7 @@ export const EditNft = () => {
                     </div>
 
                     <input type="submit" className={disabled ? 'button disabled' : 'button'} name="submit" value="Save" disabled={disabled} />
-                    <input type="button" name="back" value="Back" onClick={onBackClick} />
+                    <input type="button" className="button" name="back" value="Back" onClick={onBackClick} />
                 </form>
             </div>
         </main>

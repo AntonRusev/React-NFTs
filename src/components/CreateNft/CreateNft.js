@@ -72,9 +72,10 @@ export const CreateNft = () => {
                             {(formErrors.description) ? `${formErrors.description}` : 'TEXT'}
                         </p>
                     </div>
-
-                    <input type="submit" className={disabled ? 'button disabled' : 'button'} name="submit" value="Add" disabled={disabled} />
-                    <input type="button" className='button' name="back" value="Back" onClick={onBackClick} />
+                    <div className='create-btn-holder'>
+                        <input type="submit" className={disabled ? 'button disabled' : 'button'} name="submit" value="Add" disabled={disabled} />
+                        <input type="button" className='button' name="back" value="Back" onClick={onBackClick} />
+                    </div>
                 </form>
             </div>
         </main>

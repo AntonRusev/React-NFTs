@@ -70,16 +70,20 @@ export const NftDetails = () => {
                         <button className="explore-btn" onClick={onBackBtnClick}>Back</button>
                     </div>
 
-                    <h1 className="details-title">"{nft.nftName}"</h1>
+                    <h1 className="details-title">{nft.nftName}</h1>
 
                     <div className="img-holder">
                         <img className="sample-img" src={nft.imageUrl} alt="dog" />
                     </div>
 
                     <p className="details-price">
-                        <i class="fa-brands fa-bitcoin"></i>
+                        <i className="fa-brands fa-bitcoin"></i>
                         {nft.price}
                     </p>
+
+                    <div className="details-description">
+                        <p>{nft.description}</p>
+                    </div>
 
 
                     <div className="details-btns-row">

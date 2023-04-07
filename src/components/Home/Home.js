@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 export const Home = () => {
     return (
-        <main id="main">
+        <main id="main" className='home'>
         <div className="hero">
             <h2 className="welcome">Welcome to the NFTs gallery!</h2>
             <p className="desc">Here we strive to gather and put on display as many valuable pictures of <strong>N</strong>oses, <strong>F</strong>eet and <strong>T</strong>ail<strong>s</strong> of our dearest pets!</p>
