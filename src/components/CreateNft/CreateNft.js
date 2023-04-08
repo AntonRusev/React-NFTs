@@ -58,7 +58,7 @@ export const CreateNft = () => {
                     {/* Validation field */}
                     <div>
                         <p className={formErrors.price ? 'not-validated' : 'validated'}>
-                            {(formErrors.price) ? `${formErrors.price}` : 'TEXTTEXTT EXTTEXTTEXTTEXT EXTTEXTTEXTTEXT'}
+                            {(formErrors.price) ? `${formErrors.price}` : 'TEXTTEXTT EXTTEXTTEXTTEXT'}
                         </p>
                     </div>
 

@@ -7,11 +7,10 @@ import { NftProvider } from "../../contexts/NftContext";
 import { AuthProvider } from "../../contexts/AuthContext";
 import { ModalProvider } from "../../contexts/ModalContext";
 
-import { Gallery } from "./Gallery";
+import { Home } from "./Home";
 
-
-describe('Gallery Component', () => {
-    test('Click on Login link', async () => {
+describe('Home Component', () => {
+    test('Click on Explore link', async () => {
         global.window = { location: { pathname: null } };
 
         render(
@@ -19,15 +18,15 @@ describe('Gallery Component', () => {
                 <BrowserRouter>
                     <AuthProvider>
                         <NftProvider>
-                            <Gallery />
+                            <Home />
                         </NftProvider>
                     </AuthProvider>
                 </BrowserRouter>
             </ModalProvider>
         );
 
-        await userEvent.click(screen.queryByText('Login'));
+        await userEvent.click(screen.queryByText('Explore'));
 
-        waitFor(() => expect(global.window.location.pathname).toContain(`/login`));
+        waitFor(() => expect(global.window.location.pathname).toContain(`/gallery`));
     });
 });

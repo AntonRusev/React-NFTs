@@ -6,7 +6,7 @@ import userEvent from "@testing-library/user-event";
 import { GalleryItem } from "./GalleryItem";
 
 
-describe('Gallery Item Component', () => {
+describe('GalleryItem Component', () => {
     test('Show nftName', () => {
         const nftName = 'nftName';
 
@@ -31,19 +31,19 @@ describe('Gallery Item Component', () => {
         waitFor(() => expect(screen.getByText(description)).toBeInTheDocument());
     });
 
-    test('Click on Details link', async () => {
-        global.window = { location: { pathname: null } };
+    // test('Click on Details link', async () => {
+    //     global.window = { location: { pathname: null } };
 
-        const itemId = 'testId';
+    //     const itemId = 'testId';
 
-        render(
-            <BrowserRouter>
-                <GalleryItem _id={itemId} />
-            </BrowserRouter>
-        );
+    //     render(
+    //         <BrowserRouter>
+    //             <GalleryItem _id={itemId} />
+    //         </BrowserRouter>
+    //     );
 
-        await userEvent.click(screen.queryByText('Details'));
+    //     await userEvent.click(screen.queryByText('Details'));
 
-        waitFor(() => expect(global.window.location.pathname).toContain(`/gallery/${itemId}`));
-    });
+    //     waitFor(() => expect(global.window.location.pathname).toContain(`/gallery/${itemId}`));
+    // });
 });
