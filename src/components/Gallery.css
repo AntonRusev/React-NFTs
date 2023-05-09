@@ -142,6 +142,9 @@
 }
 
 .details-price {
+    font-family: 'Orbitron', sans-serif;
+
+
     font-size: 2rem;
     padding: 0.5rem 1rem;
     border: 1px solid var(--orange-regular);
@@ -169,6 +172,10 @@
     margin-bottom: 1rem;
 }
 
+.details-description p{
+    font-size: 2rem;
+ }
+
 /* COMMENTS */
 
 .details-comments {
@@ -187,6 +194,7 @@
 }
 
 .comment:nth-child(odd) {
+    font-size: 1.5rem;
     border: solid 2px var();
     border-radius: 6px;
     color: var(--body-bg);
@@ -196,6 +204,7 @@
 }
 
 .comment:nth-child(even) {
+    font-size: 1.5rem;
     border: solid 2px var();
     border-radius: 6px;
     color: var(--body-bg);

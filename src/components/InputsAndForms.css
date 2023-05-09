@@ -27,12 +27,6 @@
 
 /* LOGIN, REGISTER AND CREATE SIDE IMG */
 
-.login-side,
-.register-side,
-.create-side {
-    /* width: 50%; */
-}
-
 .login-side img,
 .register-side img,
 .create-side img {
@@ -64,6 +58,7 @@
 .login-wrap .button,
 .register-wrap .button,
 .create-wrap .button {
+    font-family: 'Permanent Marker', cursive;
     font-size: 1.8rem;
     padding: 0.5rem 1rem;
     border-radius: 6px;

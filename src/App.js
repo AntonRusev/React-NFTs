@@ -43,7 +43,7 @@ function App() {
                             <Route path='/gallery' element={<Gallery />} />
                             <Route path='/gallery/:nftId' element={<NftDetails />} />
                             <Route element={<GuestRouteGuard />}>
-                                <Route path='/logout' element={<Logout />} />
+                                <Route path='/logout' element={<Logout  />} />
                                 <Route path='/create' element={<CreateNft />} />
                                 <Route path='/gallery/:nftId/edit' element={<EditNft />} />
                                 <Route path='/profile' element={<Profile />} />

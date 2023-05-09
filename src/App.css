@@ -10,7 +10,8 @@
 body {
   box-sizing: border-box;
   background-color: var(--body-bg);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Permanent Marker', cursive;
+
   color: var(--body-bg);
   /* TODO FULL SCREEN 1920px */
   /* max-width: 1920px; */
@@ -63,6 +64,10 @@ body {
 #header a {
   text-decoration: none;
   color: var(--body-bg);
+}
+
+#header li a {
+font-size: 1.2rem;
 }
 
 #header .toggle-button {
@@ -150,6 +155,7 @@ body {
 }
 
 #main .hero .explore-btn {
+  font-family: 'Permanent Marker', cursive;
   font-size: 2rem;
   padding: 0.5rem 1rem;
   margin: 6px;
@@ -247,7 +253,7 @@ body {
 }
 
 #footer .author-info {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   text-align: center;
   color: var(--orange-regular);
   padding: 1rem 1rem;
@@ -266,8 +272,27 @@ body {
   padding: 0rem 0.5rem;
 }
 
+#footer .media-links li i{
+  transition: all 300ms ease-in-out;
+}
+
+#footer .media-links li i.fa-facebook:hover {
+  color: #4867aa;
+  transform: scale(1.2);
+}
+
+#footer .media-links li i.fa-discord:hover {
+  color: #5562ea;
+  transform: scale(1.2);
+}
+
+#footer .media-links li i.fa-github:hover {
+  color: purple;
+  transform: scale(1.2);
+}
+
 #footer .media-links li a i {
-  font-size: 1.75rem;
+  font-size: 2.75rem;
   color: var(--body-bg);
 }
 
@@ -319,6 +344,10 @@ body {
   #header .head .toggle-button {
     font-size: 2.7rem;
   }
+
+  #header li a {
+    font-size: 1.4rem;
+    }
 }
 
 @media screen and (min-width: 800px) {
