@@ -113,7 +113,6 @@ export const NftDetails = () => {
                         ))}
                     </ul>
 
-
                     {isAuthenticated && <AddComment onCommentSubmit={onCommentSubmit} />}
                 </div>
             </div>

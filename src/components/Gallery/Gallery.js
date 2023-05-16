@@ -17,7 +17,9 @@ export const Gallery = () => {
         <main id="main">
             <div className="hero">
                 <h1 className='gallery-title'>Welcome to our Gallery!</h1>
+
                 <h2 className='gallery-subtitle'>Currently it hosts {nfts.length} NFTs!</h2>
+
                 <div>
                     <p className='paragraph'>If you'd like to add your own NFTs</p>
                     {
@@ -26,8 +28,8 @@ export const Gallery = () => {
                             : <Link className='explore-btn' to={'/login'}>Login</Link>
                     }
                 </div>
-
             </div>
+
             <div className='gallery'>
                 <ul className='gallery-items'>
                     {nfts.map(nft => <GalleryItem key={nft._id} {...nft} />)}

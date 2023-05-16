@@ -26,9 +26,12 @@ export const CreateNft = () => {
             <div className="create-side">
                 <img className="side-img" src="https://images.unsplash.com/photo-1612865621039-a45bc11f06bd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="" />
             </div>
+
             <div className="create-wrap">
                 <h2>Add your NFT</h2>
+
                 <form action="post" id="create-form" onSubmit={e => onSubmit(e, formValues)}>
+
                     <div className="nftName-wrap">
                         <label htmlFor="nftName"><i className={!touched.nftName ? 'fa-solid fa-tag orange' : formErrors.nftName ? 'fa-solid fa-tag red' : 'fa-solid fa-tag green'}></i></label>
                         <input type="text" name='nftName' id="nftName" placeholder="Name" value={formValues.nftName} onChange={formValueChangeHandler} onBlur={formValidate} />
@@ -72,10 +75,12 @@ export const CreateNft = () => {
                             {(formErrors.description) ? `${formErrors.description}` : 'TEXT'}
                         </p>
                     </div>
+
                     <div className='create-btn-holder'>
                         <input type="submit" className={disabled ? 'button disabled' : 'button'} name="submit" value="Add" disabled={disabled} />
                         <input type="button" className='button' name="back" value="Back" onClick={onBackClick} />
                     </div>
+
                 </form>
             </div>
         </main>

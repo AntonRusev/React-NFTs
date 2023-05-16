@@ -21,11 +21,11 @@ export const AuthProvider = ({
             localStorage.setItem('userData', JSON.stringify(auth));
         } else {
             const userData = JSON.parse(localStorage.getItem('userData'));
-                if (userData) {
-                    setAuth(userData);
-                };
+            if (userData) {
+                setAuth(userData);
+            };
         };
-    },[auth, auth.accessToken]);
+    }, [auth, auth.accessToken]);
 
     const onAuthSubmit = async (e, formValues) => {
         e.preventDefault();
@@ -40,14 +40,15 @@ export const AuthProvider = ({
                 result = await authService.register(values);
             } else {
                 result = await authService.login(values);
-            }
+            };
+
             setAuth(result);
 
-            onModalActivate({text: `Welcome, ${result.username}`, type: 'green'});
+            onModalActivate({ text: `Welcome, ${result.username}`, type: 'green' });
 
             navigate('/gallery');
         } catch (err) {
-            onModalActivate({text: err.message, type: 'red'});
+            onModalActivate({ text: err.message, type: 'red' });
             throw new Error(err);
         };
     };
@@ -79,4 +80,4 @@ export const AuthProvider = ({
             </AuthContext.Provider>
         </>
     );
-}
+};

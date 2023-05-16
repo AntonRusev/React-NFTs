@@ -15,7 +15,7 @@ export const NftProvider = ({
     useEffect(() => {
         nftsService.getAll()
             .then(result => setNfts(result))
-            .catch(err => console.log(err))
+            .catch(err => console.log(err));
     }, []);
 
     const onCreateNftSubmit = async (e, data) => {
@@ -44,7 +44,7 @@ export const NftProvider = ({
         setNfts(state => state.filter(x => x._id !== nftId));
 
         navigate('/gallery');
-    }
+    };
 
     const nftContextValue = {
         onCreateNftSubmit,
@@ -60,4 +60,4 @@ export const NftProvider = ({
             </NftContext.Provider>
         </>
     );
-}
+};

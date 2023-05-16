@@ -30,7 +30,7 @@ describe('Header Component', () => {
             <ModalProvider>
                 <BrowserRouter>
                     <AuthProvider>
-                            <Header />
+                        <Header />
                     </AuthProvider>
                 </BrowserRouter>
             </ModalProvider>
@@ -48,7 +48,7 @@ describe('Header Component', () => {
             <ModalProvider>
                 <BrowserRouter>
                     <AuthProvider>
-                            <Header />
+                        <Header />
                     </AuthProvider>
                 </BrowserRouter>
             </ModalProvider>
@@ -66,7 +66,7 @@ describe('Header Component', () => {
             <ModalProvider>
                 <BrowserRouter>
                     <AuthProvider>
-                            <Header />
+                        <Header />
                     </AuthProvider>
                 </BrowserRouter>
             </ModalProvider>
@@ -84,7 +84,7 @@ describe('Header Component', () => {
             <ModalProvider>
                 <BrowserRouter>
                     <AuthProvider>
-                            <Header />
+                        <Header />
                     </AuthProvider>
                 </BrowserRouter>
             </ModalProvider>

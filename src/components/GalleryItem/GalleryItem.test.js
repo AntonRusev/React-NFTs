@@ -1,10 +1,8 @@
 import { BrowserRouter } from "react-router-dom";
 
 import { render, screen, waitFor } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 
 import { GalleryItem } from "./GalleryItem";
-
 
 describe('GalleryItem Component', () => {
     test('Show nftName', () => {
@@ -30,20 +28,4 @@ describe('GalleryItem Component', () => {
 
         waitFor(() => expect(screen.getByText(description)).toBeInTheDocument());
     });
-
-    // test('Click on Details link', async () => {
-    //     global.window = { location: { pathname: null } };
-
-    //     const itemId = 'testId';
-
-    //     render(
-    //         <BrowserRouter>
-    //             <GalleryItem _id={itemId} />
-    //         </BrowserRouter>
-    //     );
-
-    //     await userEvent.click(screen.queryByText('Details'));
-
-    //     waitFor(() => expect(global.window.location.pathname).toContain(`/gallery/${itemId}`));
-    // });
 });

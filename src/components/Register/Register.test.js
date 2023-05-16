@@ -47,7 +47,7 @@ describe('Register Component', () => {
             <ModalProvider>
                 <BrowserRouter>
                     <AuthProvider>
-                            <Register />
+                        <Register />
                     </AuthProvider>
                 </BrowserRouter>
             </ModalProvider>

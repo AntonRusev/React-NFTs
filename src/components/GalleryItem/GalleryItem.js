@@ -11,6 +11,7 @@ export const GalleryItem = ({
             <li className="nft-item">
                 <article className="card">
                     <img className="img-bg" src={imageUrl} alt="nft-item" />
+
                     <div className="content">
                         <h2 className="title">{nftName}</h2>
                         <p className="description">{description}</p>

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
 import { AuthContext } from '../../contexts/AuthContext';
 
-import '../InputsAndForms.css'
+import '../InputsAndForms.css';
 
 export const Register = () => {
     const { onAuthSubmit } = useContext(AuthContext);
@@ -22,8 +22,10 @@ export const Register = () => {
             <div className="register-side">
                 <img className="side-img" src="https://images.unsplash.com/photo-1646758489059-cddff648a193?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="" />
             </div>
+
             <div className="register-wrap">
                 <h2>Join us</h2>
+                
                 <form action="post" id="register-form" onSubmit={e => onSubmit(e, formValues)}>
                     <div className="username-wrap">
                         <label htmlFor="username">
@@ -87,4 +89,4 @@ export const Register = () => {
             </div>
         </main>
     );
-}
+};

@@ -47,7 +47,7 @@ describe('Login Component', () => {
             <ModalProvider>
                 <BrowserRouter>
                     <AuthProvider>
-                            <Login />
+                        <Login />
                     </AuthProvider>
                 </BrowserRouter>
             </ModalProvider>

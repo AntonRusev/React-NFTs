@@ -6,7 +6,7 @@ import { AuthProvider } from "../../contexts/AuthContext";
 import { NftProvider } from "../../contexts/NftContext";
 import { ModalProvider } from "../../contexts/ModalContext";
 
-import {CreateNft} from './CreateNft';
+import { CreateNft } from './CreateNft';
 
 
 describe('CreateNFT Component', () => {

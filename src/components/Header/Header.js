@@ -12,17 +12,17 @@ export const Header = () => {
     const handleCLick = () => {
         if (window.innerWidth < 800) {
             setClick(!click);
-        }
-    }
+        };
+    };
 
     return (
         <header id="header">
-            <div className='head'> 
-            <h1 className="logo"><Link to='/'>NFTs</Link></h1>
+            <div className='head'>
+                <h1 className="logo"><Link to='/'>NFTs</Link></h1>
 
-            <div className="toggle-button" onClick={handleCLick}>
-                <i className={click ? 'fas fa-times' : 'fas fa-bars'} ></i>
-            </div>
+                <div className="toggle-button" onClick={handleCLick}>
+                    <i className={click ? 'fas fa-times' : 'fas fa-bars'} ></i>
+                </div>
             </div>
 
             <nav className={click ? "nav" : "nav dropdown"}>
@@ -30,6 +30,7 @@ export const Header = () => {
                     <li><Link to='/' onClick={handleCLick}>HOME</Link></li>
                     <li><Link to='/gallery' onClick={handleCLick}>GALLERY</Link></li>
                 </ul>
+                
                 <ul className="user-nav">
                     {!isAuthenticated && (
                         <>

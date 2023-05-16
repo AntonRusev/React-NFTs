@@ -11,17 +11,17 @@ export const request = async (method, url, data) => {
             };
 
             options.body = JSON.stringify(data);
-        }
-    }
+        };
+    };
 
     const userData = JSON.parse(localStorage.getItem('userData'));
-    
+
     if (userData) {
         options.headers = {
             ...options.headers,
             'X-Authorization': userData.accessToken,
         };
-    }
+    };
 
     try {
         const response = await fetch(url, options);
@@ -29,25 +29,25 @@ export const request = async (method, url, data) => {
         if (response.ok !== true) {
             if (response.status === 403) {
                 // sessionStorage.removeItem('userData'); 
-            }
+            };
             const error = await response.json();
             throw new Error(error.message);
-        }
+        };
 
         if (response.status === 204) {
             // return response;
             return {};
         } else {
             const result = await response.json();
-    
+
             return result;
-        }
-    
+        };
+
 
     } catch (err) {
         // alert(err.message);
         throw err;
-    }
+    };
 };
 
 export const get = request.bind(null, 'GET');

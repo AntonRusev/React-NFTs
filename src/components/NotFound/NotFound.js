@@ -7,4 +7,4 @@ export const NotFound = () => {
             </div>
         </main>
     );
-}
+};

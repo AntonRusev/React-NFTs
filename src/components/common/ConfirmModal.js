@@ -12,23 +12,24 @@ export const ConfirmModal = () => {
     const onConfirm = () => {
         onModalClose();
 
-        onDeleteConfirm(modalData.text)
-    }
+        onDeleteConfirm(modalData.text);
+    };
 
     return (
         <div onClick={onModalClose} className="overlay">
             <div onClick={(e) => e.stopPropagation()} className={`modal-container-${modalData.type} modal-container`}>
-                {/* <div className='close-holder'>
-                    <button onClick={onModalClose}><i className="fa-regular fa-circle-xmark"></i></button>
-                </div> */}
+
                 <p className={modalData.type === "orange" ? 'orange' : 'hidden'}>
                     <i className="fa-solid fa-triangle-exclamation"></i>
                 </p>
+
                 <h3>Are you sure that you want to delete this NFT?</h3>
+
                 <div className='btns-holder'>
                     <button onClick={onConfirm}>DELETE</button>
                     <button onClick={onModalClose}>CANCEL</button>
                 </div>
+
             </div>
         </div>
     );

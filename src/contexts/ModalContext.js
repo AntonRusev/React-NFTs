@@ -9,11 +9,11 @@ export const ModalProvider = ({
     const [isModalActive, setIsModalActive] = useState(false);
 
     useEffect(() => {
-        if(Object.keys(modalData).length !== 0) {
+        if (Object.keys(modalData).length !== 0) {
             setIsModalActive(true);
         } else {
             setIsModalActive(false);
-        }
+        };
     }, [modalData]);
 
     const onModalActivate = (data) => {
@@ -38,5 +38,4 @@ export const ModalProvider = ({
             </ModalContext.Provider>
         </>
     );
-
 };

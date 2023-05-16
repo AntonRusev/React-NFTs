@@ -3,8 +3,8 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import * as nftsService from '../../services/nftsService';
 
-import { NftContext } from "../../contexts/NftContext";
 import { useForm } from "../../hooks/useForm";
+import { NftContext } from "../../contexts/NftContext";
 
 export const EditNft = () => {
     const { onEditNftSubmit } = useContext(NftContext);
@@ -37,11 +37,15 @@ export const EditNft = () => {
 
     return (
         <main id="create">
+
             <div className="create-side">
                 <img className="side-img" src={formValues.imageUrl} alt="" />
             </div>
+
             <div className="create-wrap">
+
                 <h2>Edit NFT</h2>
+
                 <form action="post" id="create-form" onSubmit={e => onEditNftSubmit(e, nftId, formValues)}>
                     <div className="nftName-wrap">
                         <label htmlFor="nftName"><i className={!touched.nftName ? 'fa-solid fa-tag orange' : formErrors.nftName ? 'fa-solid fa-tag red' : 'fa-solid fa-tag green'}></i></label>
@@ -90,6 +94,7 @@ export const EditNft = () => {
                     <input type="submit" className={disabled ? 'button disabled' : 'button'} name="submit" value="Save" disabled={disabled} />
                     <input type="button" className="button" name="back" value="Back" onClick={onBackClick} />
                 </form>
+
             </div>
         </main>
     );

@@ -1,6 +1,6 @@
 import { useForm } from "../../../hooks/useForm";
 
-import '../../InputsAndForms.css'
+import '../../InputsAndForms.css';
 
 export const AddComment = ({
     onCommentSubmit
@@ -13,6 +13,7 @@ export const AddComment = ({
         <div id="create">
             <article className="create-wrap">
                 <label className="title-add">Add new comment:</label>
+                
                 <form action="post" id="create-form" onSubmit={e => onSubmit(e, formValues)}>
                     <div className="comment-wrap">
                         <label htmlFor="comment"><i className={!touched.comment ? 'fa-regular fa-comment orange' : formErrors.comment ? 'fa-regular fa-comment red' : 'fa-regular fa-comment green'}></i></label>

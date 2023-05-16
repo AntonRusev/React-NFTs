@@ -5,7 +5,7 @@ import { render, screen, waitFor } from "@testing-library/react";
 import { AuthProvider } from "../../contexts/AuthContext";
 import { ModalProvider } from "../../contexts/ModalContext";
 
-import { Profile } from './Profile'
+import { Profile } from './Profile';
 
 describe('Profile Component', () => {
     test('Show Profile Page title', () => {

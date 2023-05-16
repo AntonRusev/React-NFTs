@@ -55,7 +55,7 @@
     padding: 34px;
 }
 
-.modal-container i.fa-solid{
+.modal-container i.fa-solid {
     display: block;
     margin-left: auto;
     font-size: 74px;
@@ -104,4 +104,3 @@
     border: solid 12px red;
     border-radius: 12px;
 }
-

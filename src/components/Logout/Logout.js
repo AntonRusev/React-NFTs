@@ -8,9 +8,9 @@ export const Logout = () => {
 
     useEffect(() => {
         onLogout();
-    }, [onLogout])
+    }, [onLogout]);
 
     return (
         <Navigate to="/" />
     );
-}
+};

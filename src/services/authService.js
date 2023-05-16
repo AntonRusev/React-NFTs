@@ -1,7 +1,8 @@
 import * as request from './requester';
 
-// const baseUrl = 'http://localhost:3030/users'
-const baseUrl = 'http://localhost:3030/users'
+// const baseUrl = 'http://localhost:3030/users';
+const baseUrl = 'https://nfts-backend.herokuapp.com/users';
+
 
 
 export const login = (data) => {
@@ -14,4 +15,4 @@ export const register = (data) => {
 
 export const logout = () => {
    return request.get(`${baseUrl}/logout`);
-}
+};

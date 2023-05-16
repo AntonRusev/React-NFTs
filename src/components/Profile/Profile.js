@@ -10,7 +10,9 @@ export const Profile = () => {
             <div className="hero">
                 <div className="profile">
                     <h1 className="profile-title">Profile Page</h1>
+
                     <h2 className="profile-secondary">of</h2>
+
                     {isAuthenticated &&
                         <div>
                             <h3 className="profile-secondary">{username}</h3>
@@ -20,4 +22,4 @@ export const Profile = () => {
             </div>
         </main>
     );
-}
+};

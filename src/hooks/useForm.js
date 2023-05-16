@@ -51,8 +51,8 @@ export const useForm = (initialValues, onSubmitHandler) => {
                 setDisabled(true);
             } else {
                 setDisabled(false);
-            }
-        }
+            };
+        };
     }, [formErrors.username,
     formErrors.email,
     formErrors.password,
