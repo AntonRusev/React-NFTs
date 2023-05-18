@@ -4,6 +4,9 @@
   --body-bg: #244435;
   --container-bg: #fff3e7;
   --orange-regular: orange;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
@@ -11,7 +14,6 @@ body {
   box-sizing: border-box;
   background-color: var(--body-bg);
   font-family: 'Permanent Marker', cursive;
-
   color: var(--body-bg);
   display: flex;
   justify-content: center;
