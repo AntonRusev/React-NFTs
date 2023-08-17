@@ -1,10 +1,8 @@
-name: NFTs Gallery CI
+name: Firebase CI
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches: main
 
 jobs:
   build:
@@ -13,34 +11,39 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [15.x]
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+    - uses: actions/checkout@v2
+    - name: Use Node.js version ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - name: Install  NPM 
-      run: npm install
-    - name: Run Unit Tests
-      run: npm test
-    - name: Build
-      run: npm run build
+    
+    - run: npm i
+    - run: npm install -g firebase-tools
+    - run: npm run test
+    - run: npm run build
+    - name: Archive Build
+      uses: actions/upload-artifact@v2
+      with:
+        name: build
+        path: build
 
   deploy:
-
+    name: Deploy
     needs: build
     runs-on: ubuntu-latest
-
     steps:
-      - name: Deploy Firebase Function
-        uses: danielmillan/pipelines-firebase-functions@1.0.1
+      - uses: actions/checkout@v2
+      - name: Download Build
+        uses: actions/download-artifact@v2
         with:
-          # Token generated to authenticate in firebase
-          firebase-token: ${{ secrets.FIREBASE_TOKEN }}
-          # Name of the folder containing the resources to be deployed
-          resources-name: build
-          # Firebase project name
-          project-name: NFTs Gallery
+          name: build
+          path: build
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
