@@ -32,12 +32,15 @@ jobs:
   deploy:
 
     needs: build
-    
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
-      
-      - name: Deploy
-        run: npx firebase-tools deploy
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      - name: Deploy Firebase Function
+        uses: danielmillan/pipelines-firebase-functions@1.0.1
+        with:
+          # Token generated to authenticate in firebase
+          firebase-token: ${{ secrets.FIREBASE_TOKEN }}
+          # Name of the folder containing the resources to be deployed
+          resources-name: build
+          # Firebase project name
+          project-name: NFTs Gallery
