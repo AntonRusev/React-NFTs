@@ -30,10 +30,12 @@ jobs:
   deploy:
 
     needs: build
-    runs-on: ubuntu-latest
     
+    name: Deploy to Firebase
+    runs-on: ubuntu-latest
     steps:
-    - name: Deploy to production
-      uses: BIGG-Kaymo/deploy-firebase-functions@v1.0.1
-      with:
-        firebase-token: ${{ secrets.FIREBASE_TOKEN }}
+    - uses: actions/checkout@v2
+    - uses: jsryudev/deploy-firebase-functions@v0.0.2
+      env:
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        FIREBASE_PROJECT: nfts-gallery
