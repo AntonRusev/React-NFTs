@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import * as nftsService from '../../services/nftsService';
@@ -7,7 +7,6 @@ import { useForm } from "../../hooks/useForm";
 import { NftContext } from "../../contexts/NftContext";
 
 export const EditNft = () => {
-    const [currentValues, setCurrentValues] = useState('');
     const { onEditNftSubmit } = useContext(NftContext);
 
     const { nftId } = useParams();
@@ -24,14 +23,11 @@ export const EditNft = () => {
     useEffect(() => {
         nftsService.getOne(nftId)
             .then(result => {
-                setCurrentValues(result)
+                changeValues(result);
             })
             .catch(err => console.log(err));
     }, [nftId]);
-    
-    useEffect(() => {
-        changeValues(currentValues);
-    }, [currentValues, changeValues]);
+
 
     const onBackClick = () => {
         navigate(`/gallery/${nftId}`);
