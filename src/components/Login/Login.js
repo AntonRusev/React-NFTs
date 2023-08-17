@@ -34,9 +34,9 @@ export const Login = () => {
                     </div>
                     {/* Validation field */}
                     <div>
-                        <p className={formErrors.email ? 'not-validated' : 'validated'}>
+                       <p className={formErrors.email ? 'not-validated' : 'validated'}>
                             {(formErrors.email) ? `${formErrors.email}` : 'TEXT'}
-                        </p>
+                        </p> 
                     </div>
 
                     <div className="password-wrap">

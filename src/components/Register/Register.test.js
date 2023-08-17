@@ -11,7 +11,7 @@ import { Register } from "./Register";
 
 describe('Register Component', () => {
     test('Click on disabled Register link', async () => {
-        global.window = { location: { pathname: null } };
+        global.window ??= { location: { pathname: null } };
 
         render(
             <BrowserRouter>
@@ -41,7 +41,7 @@ describe('Register Component', () => {
     });
 
     test('Click on Login link', async () => {
-        global.window = { location: { pathname: null } };
+        global.window ??= { location: { pathname: null } };
 
         render(
             <ModalProvider>

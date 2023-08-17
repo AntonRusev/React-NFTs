@@ -48,7 +48,7 @@ describe('NftDetails Component', () => {
     });
 
     test('Click on Edit link', async () => {
-        global.window = { location: { pathname: null } };
+        global.window ??= { location: { pathname: null } };
 
         const itemId = 'testId';
 
@@ -71,7 +71,7 @@ describe('NftDetails Component', () => {
 
 
     test('Click on Back link', async () => {
-        global.window = { location: { pathname: null } };
+        global.window ??= { location: { pathname: null } };
 
         const itemId = 'testId';
 

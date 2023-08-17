@@ -10,7 +10,7 @@ import { AddComment } from "./AddComment";
 
 describe('AddComment Component', () => {
     test('Click on disabled Add link', async () => {
-        global.window = { location: { pathname: null } };
+        global.window ??= { location: { pathname: null } };
 
         render(
             <BrowserRouter>

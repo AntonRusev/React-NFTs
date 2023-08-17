@@ -11,7 +11,7 @@ import { EditNft } from "./EditNft";
 
 describe('Edit Component', () => {
     test('Click on disabled Edit link', async () => {
-        global.window = { location: { pathname: null } };
+        global.window ??= { location: { pathname: null } };
 
         render(
             <BrowserRouter>

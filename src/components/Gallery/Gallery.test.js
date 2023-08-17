@@ -12,7 +12,7 @@ import { Gallery } from "./Gallery";
 
 describe('Gallery Component', () => {
     test('Click on Login link', async () => {
-        global.window = { location: { pathname: null } };
+        global.window ??= { location: { pathname: null } };
 
         render(
             <ModalProvider>

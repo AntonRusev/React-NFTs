@@ -11,7 +11,7 @@ import { CreateNft } from './CreateNft';
 
 describe('CreateNFT Component', () => {
     test('Click on disabled Create link', async () => {
-        global.window = { location: { pathname: null } };
+        global.window ??= { location: { pathname: null } };
 
         render(
             <BrowserRouter>

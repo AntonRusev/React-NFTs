@@ -11,7 +11,7 @@ import { Home } from "./Home";
 
 describe('Home Component', () => {
     test('Click on Explore link', async () => {
-        global.window = { location: { pathname: null } };
+        global.window ??= { location: { pathname: null } };
 
         render(
             <ModalProvider>

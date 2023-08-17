@@ -24,7 +24,7 @@ describe('Header Component', () => {
     });
 
     test('Click on Gallery link', async () => {
-        global.window = { location: { pathname: null } };
+        global.window ??= { location: { pathname: null } };
 
         render(
             <ModalProvider>
@@ -42,7 +42,7 @@ describe('Header Component', () => {
     });
 
     test('Click on Home link', async () => {
-        global.window = { location: { pathname: null } };
+        global.window ??= { location: { pathname: null } };
 
         render(
             <ModalProvider>
@@ -60,7 +60,7 @@ describe('Header Component', () => {
     });
 
     test('Click on Login link', async () => {
-        global.window = { location: { pathname: null } };
+        global.window ??= { location: { pathname: null } };
 
         render(
             <ModalProvider>
@@ -78,7 +78,7 @@ describe('Header Component', () => {
     });
 
     test('Click on Register link', async () => {
-        global.window = { location: { pathname: null } };
+        global.window ??= { location: { pathname: null } };
 
         render(
             <ModalProvider>

@@ -11,7 +11,7 @@ import { Login } from "./Login";
 
 describe('Login Component', () => {
     test('Click on disabled Login link', async () => {
-        global.window = { location: { pathname: null } };
+        global.window ??= { location: { pathname: null } };
 
         render(
             <BrowserRouter>
@@ -41,7 +41,7 @@ describe('Login Component', () => {
     });
 
     test('Click on Register link', async () => {
-        global.window = { location: { pathname: null } };
+        global.window ??= { location: { pathname: null } };
 
         render(
             <ModalProvider>

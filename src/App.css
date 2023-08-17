@@ -267,8 +267,8 @@ body {
   transform: scale(1.2);
 }
 
-#footer .media-links li i.fa-discord:hover {
-  color: #5562ea;
+#footer .media-links li i.fa-linkedin:hover {
+  color: #0193cf;
   transform: scale(1.2);
 }
 
